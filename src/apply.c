@@ -127,7 +127,7 @@ struct obj *obj;
    if (target->otyp != SCR_BLANK_PAPER && target->otyp != SPE_BLANK_PAPER){
 	pline("This %s isn't empty!", typeword);
    }
-   pline("You begin writing on the %s", typeword);
+   pline("You begin writing on the %s.", typeword);
    obj->spe -= 1;
    while(1){
 	new_obj = mkobj(target->oclass, FALSE);
@@ -189,8 +189,8 @@ struct obj *obj;
     }
     obj->spe--;
     obj->owt = 10+(obj->spe/4);
-    You("tear a page out of your %s",xname(obj));
-    new_obj =  mkobj(SCR_BLANK_PAPER, FALSE);
+    You("tear a page out of your %s.",xname(obj));
+    new_obj =  mksobj(SCR_BLANK_PAPER, FALSE, FALSE);
     new_obj->cursed=obj->cursed;
     new_obj->blessed = obj->blessed;
     hold_another_object(new_obj, "Oops! %s out of your grasp!", 
@@ -207,13 +207,11 @@ struct obj *obj;
 	if(!freehand()){
 		You("can't tear a page out of a notebook with no free %s!",body_part(HAND));
 	}
-	You("tear a page out of your %s",xname(obj));
+	You("tear a page out of your %s.",xname(obj));
 	pline("The number of pages in the %s seems to remain the same.",xname(obj));
-	new_obj =  mkobj(SCR_BLANK_PAPER, FALSE);
-	if (!obj->dknown){
-		makeknown(obj->otyp);
-		obj->dknown=1;
-	}
+	new_obj =  mksobj(SCR_BLANK_PAPER, FALSE, FALSE);
+	makeknown(obj->otyp);
+	obj->dknown=1;
 	new_obj->cursed=obj->cursed;
     	new_obj->blessed = obj->blessed;
     	hold_another_object(new_obj, "Oops! %s out of your grasp!", 
