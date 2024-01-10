@@ -92,7 +92,9 @@ struct obj *obj;
 {
    struct obj *target;
    struct obj *new_obj;
+   struct obj *otmp;
    struct obj nothing;
+   long pen_wm;
    int clsstart;
    int clsend;
    int i;
@@ -126,10 +128,11 @@ struct obj *obj;
 	   : "scroll";
    if (target->otyp != SCR_BLANK_PAPER && target->otyp != SPE_BLANK_PAPER){
 	pline("This %s isn't empty!", typeword);
+	return 0;
    }
    pline("You begin writing on the %s.", typeword);
    obj->spe -= 1;
-   while(1){
+     while(1){
 	new_obj = mkobj(target->oclass, FALSE);
 	if (new_obj->otyp == SPE_BOOK_OF_THE_DEAD)
 		continue;
@@ -159,6 +162,15 @@ struct obj *obj;
 			 new_obj->cursed  = 1;
 	   }   
    	}
+   }
+   if (obj->spe==0){ /*transform into an empty pen*/
+   	Your("pen runs out of ink.");
+	otmp=mksobj(EMPTY_PEN,FALSE,FALSE);
+	otmp->owornmask = obj->owornmask;
+	replace_object(obj,otmp);
+	freeinv_core(obj);
+        addinv_core1(otmp);
+        addinv_core2(otmp);
    }
    u.uconduct.literate++;
    if (new_obj->oclass == SPBOOK_CLASS && new_obj->otyp != SPE_BLANK_PAPER){
@@ -3788,6 +3800,10 @@ doapply()
         break;
     case BALLPOINT_PEN:
 	res = use_pen(obj);
+	break;
+    case EMPTY_PEN:
+	pline("There is no ink left.");
+	res=0;
 	break;
     case PAPER_NOTEBOOK:
 	res = use_paper_notebook(obj);

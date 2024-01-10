@@ -679,7 +679,7 @@ TOOL("can of grease",       None, 1, 0, 0, 1, 15, 15, 20, IRON, HI_METAL),
 TOOL("figurine",            None, 1, 0, 1, 0, 25, 50, 80, MINERAL, HI_MINERAL),
         /* monster type specified by obj->corpsenm */
 TOOL("magic marker",        None, 1, 0, 1, 1, 15,  2, 50, PLASTIC, CLR_RED),
-TOOL("ballpoint pen",       None, 1, 1, 0, 1,  0,  2, 35, PLASTIC, CLR_BLUE),
+TOOL("ballpoint pen",      "pen", 1, 1, 0, 1,  0,  2, 35, PLASTIC, CLR_BLUE),
 TOOL("paper notebook","notebook", 0, 0, 0, 1, 10, 10, 30, PAPER,   CLR_BROWN),
 TOOL("magic notebook","notebook", 0, 0, 1, 0,  5, 10, 80, PAPER,   CLR_BROWN),
 /* traps */
@@ -709,7 +709,10 @@ WEPTOOL("grappling hook", "iron hook",
         0, 0, 0,  5,  30,  50,  2,  6, WHACK,  P_FLAIL,    IRON, HI_METAL),
 WEPTOOL("unicorn horn", None,
         1, 1, 1,  0,  20, 100, 12, 12, PIERCE, P_UNICORN_HORN,
-                                                           BONE, CLR_WHITE),
+							BONE, CLR_WHITE),
+WEPTOOL("empty pen", "pen",
+        0, 1, 0,  0,   2,  4,   3,  3, PIERCE, P_DAGGER,
+							PLASTIC, CLR_BLUE),
 /* 3.4.1: unicorn horn left classified as "magic" */
 /* two unique tools;
  * not artifacts, despite the comment which used to be here

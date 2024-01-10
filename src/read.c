@@ -682,11 +682,32 @@ int curse_bless;
                 p_glow1(obj);
             }
             break;
-        case MAGIC_FLUTE:
+	case BALLPOINT_PEN:
+	    if (is_cursed){
+		    obj->spe = 1;
+		    Your("pen leaks.");
+		    break;
+	    }
+	    else if (is_blessed){
+		    obj->spe+=rn1(15,10);
+		   }
+	    else {
+		    obj->spe+=rn1(10,5);
+	    }
+	    if (obj->spe>30){
+		    obj->spe=30;
+	    }
+	    pline("Ink starts rushing into your %s from nowhere!",xname(obj));
+	    if (is_blessed)
+		 p_glow1(obj);
+	    break;
+	case EMPTY_PEN: /* display a special msg */
+	    pline("No ink comes.");
+	    goto not_chargable;
+	case MAGIC_FLUTE:
         case MAGIC_HARP:
         case FROST_HORN:
         case FIRE_HORN:
-	case BALLPOINT_PEN:
         case DRUM_OF_EARTHQUAKE:
             if (is_cursed) {
                 stripspe(obj);

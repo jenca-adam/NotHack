@@ -91,6 +91,10 @@ register struct obj *obj;
     /* This message isn't printed in the caller because it happens
      * *whenever* Sunsword is unwielded, from whatever cause.
      */
+    if(obj->otyp==BALLPOINT_PEN){
+	    pline("That would've been a waste of ink.");
+	    return;
+    }
     setworn(obj, W_WEP);
     if (uwep == obj && artifact_light(olduwep) && olduwep->lamplit) {
         end_burn(olduwep, FALSE);
