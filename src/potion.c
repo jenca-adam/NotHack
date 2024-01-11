@@ -1146,6 +1146,10 @@ register struct obj *otmp;
             fix_petrification();
         unkn++; /* holy/unholy water can burn like acid too */
         break;
+    case POT_INK:
+	pline("Yu%s This tastes %s.", Hallucination ? "m!" : "ck.", Hallucination ? "like squid" : "bitter");
+	exercise(A_CON, FALSE);
+	break;
     case POT_POLYMORPH:
         You_feel("a little %s.", Hallucination ? "normal" : "strange");
         if (!Unchanging)
@@ -2104,7 +2108,7 @@ dodip()
             docall(potion);
         return 1;
     }
-
+    
     if (potion->otyp == POT_WATER && obj->otyp == TOWEL) {
         pline_The("towel soaks it up!");
         /* wetting towel already done via water_damage() in H2Opotion_dip */
@@ -2135,7 +2139,42 @@ dodip()
         if (erode_obj(obj, 0, ERODE_CORRODE, EF_GREASE) != ER_NOTHING)
             goto poof;
     }
+    if (potion->otyp == POT_INK) {
 
+	if(potion->cursed){
+		You("spill the ink all over your %s.", fingers_or_gloves(TRUE));
+		make_glib((int) (Glib & TIMEOUT) + d(2, 12));
+	}
+	pline("%d %d",obj->otyp,EMPTY_PEN);
+	if (obj->otyp == EMPTY_PEN){
+		pline("You fill your %s with ink.",xname(obj));
+		struct obj *otmp=mksobj(BALLPOINT_PEN,FALSE,FALSE);
+		if (potion->cursed){
+			 otmp->spe = 1;
+		}else if (potion->blessed){
+			 otmp->spe = rn1(30,15);
+		}
+		else{
+			otmp->spe = rn1(15,5);
+		}
+
+		otmp->owornmask = obj->owornmask; /*This allows players to actually wield a ballpoint pen but that's okay */
+		otmp->invlet = obj->invlet;
+		
+		replace_object(obj,otmp);
+		freeinv_core(obj);
+		addinv_core1(otmp);
+		addinv_core2(otmp);
+		delobj(obj);
+	}else if (obj->otyp == BALLPOINT_PEN){
+		You("try to fill your %s with ink, but there is still some left.");
+	}
+	else {
+		pline_The("ink makes your %s get all black.", xname(obj));
+	}
+	goto poof;
+	
+    }
     if (potion->otyp == POT_OIL) {
         boolean wisx = FALSE;
 

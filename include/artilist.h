@@ -230,6 +230,11 @@ A("The Palantir of Westernesse",        CRYSTAL_BALL,
        | SPFX_PROTECT),
       0, 0, PHYS(0, 8), NO_DFNS, NO_CARY, 0, A_LAWFUL, PM_SAMURAI, NON_PM,
       4500L, NO_COLOR),
+    
+    A("The Incompleteness Theorem", AMULET_OF_PHASING,
+      (SPFX_NOGEN | SPFX_RESTR | SPFX_INTEL | SPFX_LUCK | SPFX_HPHDAM
+       | SPFX_PROTECT),
+      0, 0, NO_ATTK, NO_DFNS, NO_CARY, 0, A_LAWFUL, PM_SCHOLAR, NON_PM, 3750L, NO_COLOR),
 
     A("The Platinum Yendorian Express Card", CREDIT_CARD,
       (SPFX_NOGEN | SPFX_RESTR | SPFX_INTEL | SPFX_DEFN),

@@ -8,7 +8,6 @@ STATIC_DCL boolean FDECL(mon_is_gecko, (struct monst *));
 STATIC_DCL int FDECL(domonnoise, (struct monst *));
 STATIC_DCL int NDECL(dochat);
 STATIC_DCL int FDECL(mon_in_room, (struct monst *, int));
-
 /* this easily could be a macro, but it might overtax dumb compilers */
 STATIC_OVL int
 mon_in_room(mon, rmtyp)
@@ -525,7 +524,7 @@ register struct monst *mtmp;
      */
     if (!canspotmon(mtmp))
         map_invisible(mtmp->mx, mtmp->my);
-
+showsound:
     switch (msound) {
     case MS_ORACLE:
         return doconsult(mtmp);
@@ -767,7 +766,10 @@ register struct monst *mtmp;
             }
             break;
         }
-        /*FALLTHRU*/
+    case MS_PARROT:
+ 	msound=rn1(40,20);
+	pline(msound);
+	goto showsound;	
     case MS_HUMANOID:
         if (!mtmp->mpeaceful) {
             if (In_endgame(&u.uz) && is_mplayer(ptr))
@@ -970,7 +972,6 @@ register struct monst *mtmp;
     }
     return 1;
 }
-
 /* #chat command */
 int
 dotalk()

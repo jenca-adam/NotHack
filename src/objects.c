@@ -156,10 +156,12 @@ WEAPON("trident", None,
 /* blades; all stack */
 WEAPON("dagger", None,
        1, 1, 0, 30,  10,   4,  4,  3, 2, P,   P_DAGGER, IRON, HI_METAL),
+WEAPON("empty pen", "pen",
+       1, 1, 0,  2,   2,   4,  3,  3, 2, P,   P_DAGGER, IRON, CLR_BLUE),
 WEAPON("elven dagger", "runed dagger",
        0, 1, 0, 10,  10,   4,  5,  3, 2, P,   P_DAGGER, WOOD, HI_WOOD),
 WEAPON("orcish dagger", "crude dagger",
-       0, 1, 0, 12,  10,   4,  3,  3, 2, P,   P_DAGGER, IRON, CLR_BLACK),
+       0, 1, 0, 10,  10,   4,  3,  3, 2, P,   P_DAGGER, IRON, CLR_BLACK),
 WEAPON("silver dagger", None,
        1, 1, 0,  3,  12,  40,  4,  3, 2, P,   P_DAGGER, SILVER, HI_SILVER),
 WEAPON("athame", None,
@@ -610,11 +612,12 @@ AMULET("amulet of ESP",                "circular", TELEPAT, 175),
 AMULET("amulet of life saving",       "spherical", LIFESAVED, 75),
 AMULET("amulet of strangulation",          "oval", STRANGLED, 135),
 AMULET("amulet of restful sleep",    "triangular", SLEEPY, 135),
-AMULET("amulet versus poison",        "pyramidal", POISON_RES, 165),
+AMULET("amulet versus poison",        "pyramidal", POISON_RES, 120),
 AMULET("amulet of change",               "square", 0, 130),
 AMULET("amulet of unchanging",          "concave", UNCHANGING, 45),
 AMULET("amulet of reflection",        "hexagonal", REFLECTING, 75),
 AMULET("amulet of magical breathing", "octagonal", MAGICAL_BREATHING, 65),
+AMULET("amulet of phasing",           	 "convex", PASSES_WALLS, 45),
 /* fixed descriptions; description duplication is deliberate;
  * fake one must come before real one because selection for
  * description shuffling stops when a non-magic amulet is encountered
@@ -679,7 +682,7 @@ TOOL("can of grease",       None, 1, 0, 0, 1, 15, 15, 20, IRON, HI_METAL),
 TOOL("figurine",            None, 1, 0, 1, 0, 25, 50, 80, MINERAL, HI_MINERAL),
         /* monster type specified by obj->corpsenm */
 TOOL("magic marker",        None, 1, 0, 1, 1, 15,  2, 50, PLASTIC, CLR_RED),
-TOOL("ballpoint pen",      "pen", 1, 1, 0, 1,  0,  2, 35, PLASTIC, CLR_BLUE),
+TOOL("ballpoint pen",      "pen", 1, 0, 0, 1,  0,  2, 35, PLASTIC, CLR_BLUE),
 TOOL("paper notebook","notebook", 0, 0, 0, 1, 10, 10, 30, PAPER,   CLR_BROWN),
 TOOL("magic notebook","notebook", 0, 0, 1, 0,  5, 10, 80, PAPER,   CLR_BROWN),
 /* traps */
@@ -710,9 +713,6 @@ WEPTOOL("grappling hook", "iron hook",
 WEPTOOL("unicorn horn", None,
         1, 1, 1,  0,  20, 100, 12, 12, PIERCE, P_UNICORN_HORN,
 							BONE, CLR_WHITE),
-WEPTOOL("empty pen", "pen",
-        0, 1, 0,  0,   2,  4,   3,  3, PIERCE, P_DAGGER,
-							PLASTIC, CLR_BLUE),
 /* 3.4.1: unicorn horn left classified as "magic" */
 /* two unique tools;
  * not artifacts, despite the comment which used to be here
@@ -820,7 +820,8 @@ POTION("booze",                 "brown",  0, 0, 42,  50, CLR_BROWN),
 POTION("sickness",              "fizzy",  0, 0, 42,  50, CLR_CYAN),
 POTION("fruit juice",            "dark",  0, 0, 42,  50, CLR_BLACK),
 POTION("acid",                  "white",  0, 0, 10, 250, CLR_WHITE),
-POTION("oil",                   "murky",  0, 0, 30, 250, CLR_BROWN),
+POTION("oil",                   "murky",  0, 0, 20, 250, CLR_BROWN),
+POTION("ink",			 "inky",  0, 0, 10, 100, CLR_BLACK),
 /* fixed description
  */
 POTION("water",                 "clear",  0, 0, 92, 100, CLR_CYAN),

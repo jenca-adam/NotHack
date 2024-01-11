@@ -2579,6 +2579,217 @@ for saki and stories when you have finished.
 "Go now, and may our prayers be a wind at your back."
 %E [Take the Amulet to the Astral Plane to finish your task.]
 #
+#	Scholar
+#
+%Cc Sch 00001
+You are suddenly back in %H. As you look down, memories of your young, happy
+life as a student. Since your graduation, the pursuit of knowledge has led you
+far from your home. Although you don't regret leaving, you feel strangely warm
+being back.
+
+However, things don't feel right. When you look closer, it seems as if the
+whole place was swarming with strange monsters with tentacles and the
+atmosphere here is eerie.
+There are no signs of the jolly student life that you remember going
+on in %H.
+%E [You are back in %H, but something feels off.]
+%Cp Sch 00002
+Once again, you find yourself back in %H.
+%E
+%Cp Sch 00003
+You return to %H.
+There are even more monsters now, and you start fearing
+about the wellbeing of the ones you used to know.
+%E
+%Cp Sch 00005
+"I feel strange - it's as if my brain was being sucked out."
+%E
+%Cp Sch 00006
+"Beware of the mind flayers!"
+%E
+%Cp Sch 00007
+"I believe in you, %p. Only you can stop this terrible onslaught!"
+%E
+%Cp Sch 00008
+"Ever since %n created %o, I feel like my life has lost its meaning."
+%E
+%Cp Sch 00009
+"Fancy a beer?"
+%E
+%Cp Sch 00010
+"Thank you, %p, for making us be able to think again!"
+%E
+%Cp Sch 00011
+"I've always thought that %n was a chill guy. Great pity he went crazy."
+%E
+%Cp Sch 00012
+"%o must be studied carefully and not allowed to escape. You shouldn't keep it, %p."
+%E
+%Cp Sch 00013
+"I think that you shouldn't have killed %n. He had potential."
+%E
+%Cp Sch 00014
+"Fancy a beer?"
+%E
+%Cp Sch 00015
+"Hi, %p. Do you think your brain is mature enough to handle this?
+It's rather difficult now. Let me find out for you."
+%E
+%Cp Sch 00016
+"Again? Whatever. Have you at least gotten any better?"
+%E
+%Cp Sch 00017
+"You are pretty damn annoying, %p. Are you finally good enough?"
+%E
+%Cp Sch 00018
+"%pC, are you stupid or something? I never thought that someone with
+a potential like your could give it up that easily.
+You could've had a great academic career, but apparently that's
+too fancy for you. Now get out so that I don't have to see your ugly face!"
+%E
+%Cp Sch 00019
+"%pC, using my prediction capabilities, I'm 99.9% sure you will fail.
+Your heart is in the right place, don't get me wrong, but %ra's
+brain is simply uncapable of even containing the idea of %o.
+%n would just destroy you with his argumentation and proofs.
+Come back when you have a scientific career set up."
+%E
+%Cp Sch 00020
+"%pC, I can see that you didn't cite your sources or provide
+a rigorous proof in your last thesis! Are you straying from the
+path of science? Do you want all your papers in the future to be
+full of pseudo-scientifical mumbo-jumbo? If you go get %o now,
+you will definitely try to use its powers for your own good.
+I can't let that happen! Come back when your methods are a bit
+more standard."
+%E
+%Cp Sch 00021
+"There is a genius mathematician at %i, who has recently discovered a
+new theorem called %o. However, %o has charmed his mind and made him
+selfish and proud of his discovery. He is extorting other universities
+and demanding getting paid in order not to release %o to the outer world,
+which would fry the brains of everyone intelligent enough to comprehend it,
+but not intelligent enough to stand the outcome.  When we tried to stop him,
+he sent here an army of his followers and brain-sucking monsters, being said to
+be made from the fried remains of those who encountered %o.
+He materialised %o as an amulet to make it easier to carry it around.
+Find %i, and bring %o back to us. I beg you!"
+%E
+%Cp Sch 00025
+"Make sure you stay away from %n, as he can damage your brain."
+%E
+%Cp Sch 00026
+"Call upon %d when you encounter %n."
+%E
+%Cp Sch 00027
+"You must destroy %n.  He will pursue you otherwise to get %o back."
+%E
+%Cp Sch 00028
+"%pC, I believe in you. I can't go kill %n myself on account of being too lazy, but you surely will!"
+%E
+%Cp Sch 00029
+"Remember: %d's wisdom will help you."
+%E
+# too lazy to fill in the rest
+%Cp Sch 00035
+"This room seems strange: you don't remember it being here. 
+It must contain the entrance to %i.
+But in fact it's just a broom closet. Or is it?"
+%E
+%Cp Sch 00036
+You are near the entrance to %i.
+%E
+%Cp Sch 00040
+There is a strange sense of distortion in the air.
+%oC must be close.
+%E
+%Cp Sch 00041
+There is a vague, familiar presence of %o in the air.
+%E
+%Cp Sch 00050
+"%pC, you have no way of defeating me. How many published papers do you have? One?"
+%E
+%Cp Sch 00051
+"You are not getting any better, %p. Just give up! All my life I've been waiting for
+this opportunity. I won't let you take %o from me."
+%E
+%Cp Sch 00052
+"A mere %r is no match for me. You can try if you want, but I'd advise against it."
+%E
+%Cp Sch 00053
+"How did you get %o? Looks like I underestimated you. 
+I will have to kill you FOR REAl now."
+%E
+%Cp Sch 00060
+"Ever had a brain in a microwave? Well, you're about to feel like it now!"
+%E
+%Cp Sch 00061
+"HA- HA- HA- there is no way you can even comprehend %o, let alone get it from me."
+%E
+%Cp Sch 00062
+"Do you feel stupid? Is your brain melting like a snowman on a hot day?"
+%E
+%Cp Sch 00063
+"1+2 = 5"
+%E
+%Cp Sch 00064
+"Hey, what's 7+5? What's wrong? Can't answer? Thought so!"
+%E
+%Cp Sch 00065
+"I'm surprised you can still stand with how stupid you are."
+%E
+%Cp Sch 00066
+"Your IQ is 21! Only 21 people in the world are smarter than you!|
+%E
+%Cp Sch 00067
+"Well done, %p! You passed a math test for preschoolers!"
+%E
+%Cp Sch 00068
+"Do you know what lobotomy is? I'm going to do it to you now!"
+%E
+%Cp Sch 00069
+"There is absolutely no way you can have %p."
+%E
+%Cp Sch 00070
+You feel the pure power of %o enter your brain.
+All the things you believed, all the axioms you
+based your life upon - poof, they're gone; like
+a house of cards in a blizzard.
+Yet you see new horizons in the distance.
+They're warm, yellow and hopeful.
+You feel like you're in an extasis, your brain keeps
+expanding and shifting and you feel like never before.
+Eventually, the feeling subsides.
+%E
+%Cp Sch 00080
+%nC lets out a bloodcurling scream of despair and anger and overwhelming sadness, and falls down.
+You see his soul exit his lifeless body.
+%E
+%Cp Sch 00081
+%l looks at %o and smiles gently. He touches it and you see him experience
+the same extatic sensation you had before, the feeling of ultimate
+understanding.
+He says:
+"%nC was a great, wise and intelligent man, but unfortunately his soul was too
+weak to handle the power of %o. 
+You can keep its material form, it's of no use to me.
+But beware, for the Wizard is more cunning than any of the
+opponents you have encountered before. You must get
+the talisman for %d, or otherwise all wisdom in the world
+shall be destroyed."
+%E
+%Cp Sch 00082
+"As I said, I don't need %o's material form. You can keep it to yourself!
+Consider it a gift from me. It sure possesses strange powers."
+%E
+%Cp Sch 00090
+"Have you actually gotten the Amulet, %p?
+I thought you were dead.
+Anyway, and I'm sure you know this, you must now go up and up, to the
+Astral Plane, and offer the Amulet at the Temple of %d.
+It's the only way wisdom can be saved!"
+%E
+#
 #	Tourist
 #
 %Cc Tou 00001

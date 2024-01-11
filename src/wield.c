@@ -91,10 +91,6 @@ register struct obj *obj;
     /* This message isn't printed in the caller because it happens
      * *whenever* Sunsword is unwielded, from whatever cause.
      */
-    if(obj->otyp==BALLPOINT_PEN){
-	    pline("That would've been a waste of ink.");
-	    return;
-    }
     setworn(obj, W_WEP);
     if (uwep == obj && artifact_light(olduwep) && olduwep->lamplit) {
         end_burn(olduwep, FALSE);
@@ -276,6 +272,11 @@ dowield()
     if (!(wep = getobj(wield_objs, "wield")))
         /* Cancelled */
         return 0;
+    
+    if(wep->otyp==BALLPOINT_PEN){
+	    pline("That would've been a waste of ink.");
+	    return 0;
+    }
     else if (wep == uwep) {
         You("are already wielding that!");
         if (is_weptool(wep) || is_wet_towel(wep))
@@ -378,6 +379,10 @@ dowieldquiver()
                    ? bullets
                    : ready_objs;
     newquiver = getobj(quivee_types, "ready");
+    if(newquiver->otyp==BALLPOINT_PEN){
+	    pline("That would've been a waste of ink.");
+	    return 0;
+    }
 
     if (!newquiver) {
         /* Cancelled */

@@ -132,7 +132,7 @@ struct obj *obj;
    }
    pline("You begin writing on the %s.", typeword);
    obj->spe -= 1;
-     while(1){
+    while(1){
 	new_obj = mkobj(target->oclass, FALSE);
 	if (new_obj->otyp == SPE_BOOK_OF_THE_DEAD)
 		continue;
@@ -167,10 +167,12 @@ struct obj *obj;
    	Your("pen runs out of ink.");
 	otmp=mksobj(EMPTY_PEN,FALSE,FALSE);
 	otmp->owornmask = obj->owornmask;
+	otmp->invlet = obj->invlet;
 	replace_object(obj,otmp);
 	freeinv_core(obj);
         addinv_core1(otmp);
         addinv_core2(otmp);
+	delobj(obj);
    }
    u.uconduct.literate++;
    if (new_obj->oclass == SPBOOK_CLASS && new_obj->otyp != SPE_BLANK_PAPER){

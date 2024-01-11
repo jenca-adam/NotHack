@@ -138,6 +138,20 @@ static struct trobj Samurai[] = {
     { SPLINT_MAIL, 0, ARMOR_CLASS, 1, UNDEF_BLESS },
     { 0, 0, 0, 0, 0 }
 };
+static struct trobj Scholar[] = {
+#define SCH_PENS 0
+    { EMPTY_PEN, 0, WEAPON_CLASS, 5, UNDEF_BLESS }, /* quan is variable */
+    { T_SHIRT, 0, ARMOR_CLASS, 1, UNDEF_BLESS },
+    { HELM_OF_BRILLIANCE, -3, ARMOR_CLASS, 1, 0}, 
+    { POT_INK, 0, POTION_CLASS, 3, UNDEF_BLESS },
+    { SCR_IDENTIFY, 0, SCROLL_CLASS, 2, UNDEF_BLESS },
+    { UNDEF_TYP,    0, SCROLL_CLASS, 5, UNDEF_BLESS },
+    { BALLPOINT_PEN, 20, TOOL_CLASS, 1, UNDEF_BLESS }, /* to prevent stacking */
+    { BALLPOINT_PEN, 20, TOOL_CLASS, 1, UNDEF_BLESS },
+    { BALLPOINT_PEN, 20, TOOL_CLASS, 1, UNDEF_BLESS },
+    { 0, 0, 0, 0, 0 }
+
+};
 static struct trobj Tourist[] = {
 #define T_DARTS 0
     { DART, 2, WEAPON_CLASS, 25, UNDEF_BLESS }, /* quan is variable */
@@ -195,7 +209,11 @@ static struct trobj Wishing[] = { { WAN_WISHING, 3, WAND_CLASS, 1, 0 },
                                   { 0, 0, 0, 0, 0 } };
 static struct trobj Money[] = { { GOLD_PIECE, 0, COIN_CLASS, 1, 0 },
                                 { 0, 0, 0, 0, 0 } };
-
+static struct trobj Paper_notebook[] = { { PAPER_NOTEBOOK, 15 , TOOL_CLASS, 1, 0}, /*spe will be replaced */
+				{ 0, 0, 0, 0, 0 } };
+static struct trobj Magic_notebook[] = { { MAGIC_NOTEBOOK, 0, TOOL_CLASS, 1, 0},
+				{ 0, 0, 0, 0, 0 } };
+				
 /* race-based substitutions for initial inventory;
    the weaker cloak for elven rangers is intentional--they shoot better */
 static struct inv_sub {
@@ -470,6 +488,30 @@ static const struct def_skill Skill_S[] = {
     { P_TWO_WEAPON_COMBAT, P_EXPERT },
     { P_MARTIAL_ARTS, P_MASTER },
     { P_NONE, 0 }
+};
+static const struct def_skill Skill_Sch[] = {
+    { P_DAGGER, P_EXPERT },
+    { P_KNIFE, P_SKILLED },
+    { P_AXE, P_BASIC},
+    { P_SHORT_SWORD, P_BASIC },
+    { P_SABER, P_BASIC },
+    { P_FLAIL, P_BASIC },
+    { P_SPEAR, P_SKILLED },
+    { P_TRIDENT, P_BASIC },
+    { P_BOW, P_SKILLED},
+    { P_SLING, P_BASIC},
+    { P_CROSSBOW, P_SKILLED},
+    { P_DART, P_EXPERT},
+    { P_SHURIKEN, P_SKILLED},
+    { P_WHIP, P_BASIC},
+    { P_UNICORN_HORN, P_SKILLED},
+    { P_ATTACK_SPELL, P_BASIC },
+    { P_DIVINATION_SPELL, P_EXPERT },
+    { P_CLERIC_SPELL, P_BASIC },
+    { P_MATTER_SPELL, P_EXPERT },
+    { P_ESCAPE_SPELL, P_SKILLED },
+    { P_RIDING, P_SKILLED },
+    { P_NONE, 0},
 };
 static const struct def_skill Skill_T[] = {
     { P_DAGGER, P_EXPERT },
@@ -764,6 +806,24 @@ u_init()
         knows_class(ARMOR_CLASS);
         skill_init(Skill_S);
         break;
+    case PM_SCHOLAR:
+	Scholar[SCH_PENS].trquan = rn1(10, 5);
+	ini_inv(Scholar);
+
+	if (!rn2(5))
+	    ini_inv(Blindfold);
+	if (!rn2(4))
+	    ini_inv(Magic_notebook);
+	else
+	    Paper_notebook[0].trspe = rn1(30,15);
+	    ini_inv(Paper_notebook);
+
+	knows_class(SCROLL_CLASS);
+	knows_class(SPBOOK_CLASS);
+	knows_object(BALLPOINT_PEN);
+	knows_object(EMPTY_PEN);
+	skill_init(Skill_Sch);
+	break;
     case PM_TOURIST:
         Tourist[T_DARTS].trquan = rn1(20, 21);
         u.umoney0 = rnd(1000);
@@ -1119,7 +1179,7 @@ register struct trobj *trop;
                    weapon ready to swap with the primary; just make sure we
                    aren't two-weaponing (academic; no one starts that way) */
                 u.twoweap = FALSE;
-            } else if (is_helmet(obj) && !uarmh)
+            } else if (is_helmet(obj) && !uarmh && !(obj->otyp == HELM_OF_BRILLIANCE&& obj->spe<0)) /* REMOVE THE SCHOLAR'S HELM OF BRILLIANCE */
                 setworn(obj, W_ARMH);
             else if (is_gloves(obj) && !uarmg)
                 setworn(obj, W_ARMG);
@@ -1135,7 +1195,7 @@ register struct trobj *trop;
 
         if (obj->oclass == WEAPON_CLASS || is_weptool(obj)
             || otyp == TIN_OPENER || otyp == FLINT || otyp == ROCK) {
-            if (is_ammo(obj) || is_missile(obj)) {
+            if (is_ammo(obj) || is_missile(obj) || otyp == EMPTY_PEN) {
                 if (!uquiver)
                     setuqwep(obj);
             } else if (!uwep && (!uarms || !bimanual(obj))) {

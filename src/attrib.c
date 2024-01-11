@@ -73,6 +73,10 @@ static const struct innate {
                  { 15, &(HStealth), "stealthy", "" },
                  { 0, 0, 0, 0 } },
 
+  
+  sch_abil[] = { { 7,  &(HStealth), "stealthy", "" },
+	  	 { 15, &(HSee_invisible), "sharp-eyed", ""},
+		 { 0, 0, 0, 0 } },
   tou_abil[] = { { 10, &(HSearching), "perceptive", "" },
                  { 20, &(HPoison_resistance), "hardy", "" },
                  { 0, 0, 0, 0 } },

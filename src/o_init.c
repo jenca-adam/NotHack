@@ -392,8 +392,8 @@ register int oindx;
         /* clear last slot */
         if (found)
             disco[dindx - 1] = 0;
-        else
-            impossible("named object not in disco");
+        else{}
+            /*impossible("named object not in disco: %d",oindx);*/
 
         if (objects[oindx].oc_class == GEM_CLASS)
             gem_learned(oindx); /* ok, it's actually been unlearned */
