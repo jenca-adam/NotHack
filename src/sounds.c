@@ -768,7 +768,7 @@ showsound:
         }
     case MS_PARROT:
  	msound=rn1(40,20);
-	pline(msound);
+	pline("%d",msound);
 	goto showsound;	
     case MS_HUMANOID:
         if (!mtmp->mpeaceful) {
